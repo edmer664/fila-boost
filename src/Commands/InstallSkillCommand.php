@@ -1,6 +1,6 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Commands;
+namespace FilaBoost\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -19,14 +19,14 @@ class InstallSkillCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Install and link Filament Blueprint agent skills into Laravel Boost and agent directories';
+    protected $description = 'Install and link Fila-boost agent skills for Filament into Laravel Boost and agent directories';
 
     /**
      * Execute the console command.
      */
     public function handle(): int
     {
-        $this->info('Installing Filament Blueprint agent skills for Laravel Boost...');
+        $this->info('Installing Fila-boost agent skills for Laravel Boost...');
 
         $sourceDir = __DIR__.'/../../resources/skills';
         $destDir = base_path('.agents/skills');
@@ -62,7 +62,7 @@ class InstallSkillCommand extends Command
             $this->comment('Tip: Install laravel/boost to enable automated agent context enhancements.');
         }
 
-        $this->info('Filament Blueprint agent skills successfully installed!');
+        $this->info('Fila-boost agent skills successfully installed!');
 
         return 0;
     }

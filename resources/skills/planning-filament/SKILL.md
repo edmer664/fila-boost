@@ -1,10 +1,11 @@
 ---
 name: planning-filament
-description: "Generates comprehensive, self-contained Filament v5.x Blueprints for Laravel Boost. Activates when planning Filament v5 administrative resources, modular schemas, tables, clusters, widgets, infolists, tenancy, themes, or full admin panels."
-version: 1.1.0
+description: "Generates comprehensive, self-contained Filament v5.x architecture plans for Laravel Boost. Activates when planning Filament v5 administrative resources, modular schemas, tables, clusters, widgets, infolists, tenancy, themes, or full admin panels."
+version: 1.2.0
 triggers:
-  - "filament blueprint"
   - "plan filament"
+  - "filament plan"
+  - "filament architecture"
   - "filament resource"
   - "create filament panel"
   - "filament admin"
@@ -17,19 +18,20 @@ triggers:
 
 # Filament v5.x Planning Skill (`planning-filament`)
 
-When invoked, the AI coding agent MUST generate a structured, self-contained Filament v5.x Blueprint implementation plan adhering strictly to official Filament v5 modular architecture.
+When invoked, the AI coding agent MUST generate a structured, self-contained Filament v5.x architecture and implementation plan adhering strictly to official Filament v5 modular architecture.
 
 ## AI Grounding via Laravel Boost Documentation
 
 Before guessing method signatures or component syntax, the agent SHOULD query Filament documentation using Laravel Boost's native `search-docs` tool:
 - Use `search-docs` with `packages: ["filament/filament"]` and topic queries (e.g. `queries: ["infolist entries", "repeatable entry"]`, `queries: ["stats overview widget", "chart widget"]`, `queries: ["multi-tenancy"]`).
-- Ground all generated form schemas, entry types, table columns, and widget signatures against official Filament v5.x documentation before drafting blueprints.
+- Ground all generated form schemas, entry types, table columns, and widget signatures against official Filament v5.x documentation before drafting architecture plans.
 
 ## Guidelines & Rules
 
 1. **Spec-First & Lightweight Agility**:
    - Focus on complete, unambiguous requirements without administrative bloat.
    - Prominently flag unresolved business decisions in an `## ⚠️ Unresolved Decisions` section at the top of the plan.
+   - Save the plan to `plans/{feature}.md`.
 
 2. **Strict Filament v5.x Modular Class Layout**:
    - Every resource MUST separate form schemas, tables, and infolists into modular classes:

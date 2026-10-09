@@ -1,6 +1,6 @@
 {
-    "name": "fila-boost/filament-blueprint",
-    "description": "An open-source Filament v5.x blueprint planning and review skill natively integrated with Laravel Boost and AI coding agents.",
+    "name": "fila-boost/fila-boost",
+    "description": "AI-assisted architecture planning and review toolkit for Filament v5.x applications, natively integrated with Laravel Boost and AI coding agents.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -25,18 +25,18 @@
     },
     "autoload": {
         "psr-4": {
-            "FilaBoost\\FilamentBlueprint\\": "src/"
+            "FilaBoost\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FilaBoost\\FilamentBlueprint\\Tests\\": "tests/"
+            "FilaBoost\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "FilaBoost\\FilamentBlueprint\\FilaBoostServiceProvider"
+                "FilaBoost\\FilaBoostServiceProvider"
             ]
         }
     },

@@ -1,15 +1,15 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests\Feature;
+namespace FilaBoost\Tests\Feature;
 
-use FilaBoost\FilamentBlueprint\Mcp\GenerateBlueprintTool;
-use FilaBoost\FilamentBlueprint\Tests\TestCase;
+use FilaBoost\Mcp\GeneratePlanTool;
+use FilaBoost\Tests\TestCase;
 
-class GenerateBlueprintTest extends TestCase
+class GeneratePlanTest extends TestCase
 {
-    public function test_it_generates_comprehensive_blueprint_with_unresolved_decisions(): void
+    public function test_it_generates_comprehensive_plan_with_unresolved_decisions(): void
     {
-        $tool = new GenerateBlueprintTool;
+        $tool = new GeneratePlanTool;
         $response = $tool->execute([
             'feature_description' => 'Customer orders with status workflow and invoice payment handling',
         ]);

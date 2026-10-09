@@ -3,7 +3,7 @@
 ## Prerequisites
 - PHP >= 8.2
 - Composer
-- `fila-boost/filament-blueprint` package installed
+- `fila-boost/fila-boost` package installed
 - Laravel application with `laravel/boost` or compatible MCP client
 
 ---
@@ -44,10 +44,10 @@ Execute:
 
 Instruct the AI agent:
 
-> *"Using the planning-filament skill, create a blueprint for a multi-tenant Agency Client Portal featuring a customer infolist view, monthly revenue chart widget, custom slate/amber brand theme, and tenant isolation. Save to blueprints/agency-portal.md."*
+> *"Using the planning-filament skill, create an architecture plan for a multi-tenant Agency Client Portal featuring a customer infolist view, monthly revenue chart widget, custom slate/amber brand theme, and tenant isolation. Save to plans/agency-portal.md."*
 
 **Expected Outcome**:
-The agent writes `blueprints/agency-portal.md` including:
+The agent writes `plans/agency-portal.md` including:
 - Tenant model (`Agency`) and scoping rules.
 - Panel theme configuration (`colors()`, `font()`).
 - Modular Infolist schema: `App\Filament\Resources\Clients\Infolists\ClientInfolist.php`.
@@ -58,13 +58,13 @@ The agent writes `blueprints/agency-portal.md` including:
 
 ## 3. Auditing the Implementation
 
-Run the review tool against the generated blueprint:
+Run the review tool against the generated plan:
 
 ```json
 {
   "tool": "review_filament_implementation",
   "arguments": {
-    "blueprint_file": "blueprints/agency-portal.md"
+    "plan_file": "plans/agency-portal.md"
   }
 }
 ```

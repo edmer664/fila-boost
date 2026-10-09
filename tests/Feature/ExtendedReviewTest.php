@@ -1,23 +1,23 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests\Feature;
+namespace FilaBoost\Tests\Feature;
 
-use FilaBoost\FilamentBlueprint\Mcp\ReviewImplementationTool;
-use FilaBoost\FilamentBlueprint\Tests\TestCase;
+use FilaBoost\Mcp\ReviewImplementationTool;
+use FilaBoost\Tests\TestCase;
 use Illuminate\Support\Facades\File;
 
 class ExtendedReviewTest extends TestCase
 {
     public function test_it_audits_missing_infolists_and_widgets(): void
     {
-        $blueprintDir = base_path('blueprints');
-        if (! File::exists($blueprintDir)) {
-            File::makeDirectory($blueprintDir, 0755, true);
+        $planDir = base_path('plans');
+        if (! File::exists($planDir)) {
+            File::makeDirectory($planDir, 0755, true);
         }
 
-        $blueprintPath = $blueprintDir.'/extended-feature.md';
-        $dummyBlueprint = <<<MD
-# Blueprint: Extended Feature
+        $planPath = $planDir.'/extended-feature.md';
+        $dummyPlan = <<<MD
+# Feature Plan: Extended Feature
 ### Resource: `App\Filament\Resources\Clients\ClientResource`
 #### Infolist Schema: `App\Filament\Resources\Clients\Infolists\ClientInfolist`
 ### Stats Overview Widget `App\Filament\Widgets\ClientStatsOverviewWidget`
@@ -26,11 +26,11 @@ class ExtendedReviewTest extends TestCase
 ### Test `tests/Feature/Filament/ClientsTest.php`
 ## Multi-Tenancy Architecture
 MD;
-        File::put($blueprintPath, $dummyBlueprint);
+        File::put($planPath, $dummyPlan);
 
         $tool = new ReviewImplementationTool;
         $response = $tool->execute([
-            'blueprint_file' => 'blueprints/extended-feature.md',
+            'plan_file' => 'plans/extended-feature.md',
             'run_pest_tests' => false,
             'run_pint_check' => false,
         ]);
@@ -45,6 +45,6 @@ MD;
         $this->assertStringContainsString('Widget', $discrepanciesText);
         $this->assertStringContainsString('Tenant Model', $discrepanciesText);
 
-        File::delete($blueprintPath);
+        File::delete($planPath);
     }
 }

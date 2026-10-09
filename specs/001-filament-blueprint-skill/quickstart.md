@@ -1,4 +1,4 @@
-# Quickstart & Validation Guide: Filament v5.x Blueprint Agent Skill (Fila-boost)
+# Quickstart & Validation Guide: Filament v5.x Planning & Verification Skill (Fila-boost)
 
 ## Prerequisites
 - PHP >= 8.2 with standard extensions (pdo, mbstring, tokenizer)
@@ -14,7 +14,7 @@ In your Laravel project root:
 
 ```bash
 # 1. Require Fila-boost as a development dependency
-composer require fila-boost/filament-blueprint --dev
+composer require fila-boost/fila-boost --dev
 
 # 2. Run the Fila-boost installer to link skills into Boost
 php artisan fila-boost:install
@@ -33,10 +33,10 @@ ls .agents/skills/planning-filament/SKILL.md
 
 Instruct your AI coding agent (e.g. Claude Code, Cursor, Copilot) with planning mode enabled:
 
-> *"Using the planning-filament skill, create a Filament Blueprint for a customer feedback and bug report management system adhering to Filament v5.x modular architecture. Write the plan to blueprints/feedback-management.md."*
+> *"Using the planning-filament skill, create a Filament architecture plan for a customer feedback and bug report management system adhering to Filament v5.x modular architecture. Write the plan to plans/feedback-management.md."*
 
 **Expected Result**:
-The agent outputs a structured Markdown file at `blueprints/feedback-management.md` containing:
+The agent outputs a structured Markdown file at `plans/feedback-management.md` containing:
 - High-level business flow and unresolved decisions.
 - Eloquent models (`FeedbackReport`, `FeedbackCategory`) with migrations, relationships, casts, and enums.
 - Filament v5 Resource (`App\Filament\Resources\FeedbackReports\FeedbackReportResource`) referencing modular:
@@ -48,13 +48,13 @@ The agent outputs a structured Markdown file at `blueprints/feedback-management.
 
 ---
 
-## 3. Implementing the Blueprint
+## 3. Implementing the Plan
 
 Switch out of planning mode and instruct the implementing agent:
 
-> *"Implement blueprints/feedback-management.md in this application checkout. Follow the plan and run the relevant tests."*
+> *"Implement plans/feedback-management.md in this application checkout. Follow the plan and run the relevant tests."*
 
-The agent reads the blueprint file directly and writes the models, migrations, policies, Filament v5 modular classes, and Pest tests.
+The agent reads the plan file directly and writes the models, migrations, policies, Filament v5 modular classes, and Pest tests.
 
 ---
 
@@ -62,7 +62,7 @@ The agent reads the blueprint file directly and writes the models, migrations, p
 
 Prompt your AI agent:
 
-> *"Using the reviewing-filament-plans skill, review the current checkout against blueprints/feedback-management.md."*
+> *"Using the reviewing-filament-plans skill, review the current checkout against plans/feedback-management.md."*
 
 **Verification Quality Gate**:
 1. Run Pint:

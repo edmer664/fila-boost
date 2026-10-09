@@ -1,10 +1,11 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint;
+namespace FilaBoost;
 
-use FilaBoost\FilamentBlueprint\Commands\InstallSkillCommand;
-use FilaBoost\FilamentBlueprint\Mcp\GenerateBlueprintTool;
-use FilaBoost\FilamentBlueprint\Mcp\ReviewImplementationTool;
+use FilaBoost\Commands\InstallSkillCommand;
+use FilaBoost\Mcp\GenerateBlueprintTool;
+use FilaBoost\Mcp\GeneratePlanTool;
+use FilaBoost\Mcp\ReviewImplementationTool;
 use Illuminate\Support\ServiceProvider;
 
 class FilaBoostServiceProvider extends ServiceProvider
@@ -14,6 +15,10 @@ class FilaBoostServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->singleton(GeneratePlanTool::class, function () {
+            return new GeneratePlanTool;
+        });
+
         $this->app->singleton(GenerateBlueprintTool::class, function () {
             return new GenerateBlueprintTool;
         });

@@ -1,21 +1,21 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests\Unit;
+namespace FilaBoost\Tests\Unit;
 
-use FilaBoost\FilamentBlueprint\Support\BlueprintRenderer;
-use FilaBoost\FilamentBlueprint\Tests\TestCase;
+use FilaBoost\Support\PlanRenderer;
+use FilaBoost\Tests\TestCase;
 
-class BlueprintRendererTest extends TestCase
+class PlanRendererTest extends TestCase
 {
-    public function test_it_renders_filament_v5_modular_blueprint(): void
+    public function test_it_renders_filament_v5_modular_plan(): void
     {
-        $renderer = new BlueprintRenderer;
+        $renderer = new PlanRenderer;
         $result = $renderer->render([
             'feature_description' => 'Customer invoicing with line items and status tracking',
         ]);
 
         $this->assertEquals('success', $result['status']);
-        $this->assertStringContainsString('blueprints/', $result['blueprint_file']);
+        $this->assertStringContainsString('plans/', $result['plan_file']);
         $this->assertEquals('5.x', $result['filament_version']);
         $this->assertNotEmpty($result['unresolved_decisions']);
         $this->assertNotEmpty($result['entities_detected']);

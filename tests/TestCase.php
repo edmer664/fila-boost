@@ -1,8 +1,8 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests;
+namespace FilaBoost\Tests;
 
-use FilaBoost\FilamentBlueprint\FilaBoostServiceProvider;
+use FilaBoost\FilaBoostServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase

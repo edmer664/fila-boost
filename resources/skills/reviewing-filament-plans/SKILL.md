@@ -1,17 +1,18 @@
 ---
 name: reviewing-filament-plans
-description: "Reviews the current application repository checkout against a previously generated Filament Blueprint, checking adherence to Filament v5.x modular structure (Schemas/, Tables/, and Infolists/ classes), widgets, multi-tenancy scoping, authorization policies, and test suites."
-version: 1.1.0
+description: "Reviews the current application repository checkout against a previously generated Filament architecture plan, checking adherence to Filament v5.x modular structure (Schemas/, Tables/, and Infolists/ classes), widgets, multi-tenancy scoping, authorization policies, and test suites."
+version: 1.2.0
 triggers:
   - "review filament"
   - "verify filament"
-  - "audit filament blueprint"
-  - "filament blueprint review"
+  - "audit filament plan"
+  - "filament plan review"
+  - "review filament plan"
 ---
 
 # Filament v5.x Review Skill (`reviewing-filament-plans`)
 
-When invoked, the AI coding agent MUST evaluate an existing application codebase checkout against a saved Filament v5.x Blueprint document.
+When invoked, the AI coding agent MUST evaluate an existing application codebase checkout against a saved Filament v5.x architecture plan document.
 
 ## Auditing Rules
 

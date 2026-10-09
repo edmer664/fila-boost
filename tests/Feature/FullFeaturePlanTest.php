@@ -1,15 +1,15 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests\Feature;
+namespace FilaBoost\Tests\Feature;
 
-use FilaBoost\FilamentBlueprint\Mcp\GenerateBlueprintTool;
-use FilaBoost\FilamentBlueprint\Tests\TestCase;
+use FilaBoost\Mcp\GeneratePlanTool;
+use FilaBoost\Tests\TestCase;
 
-class FullFeatureBlueprintTest extends TestCase
+class FullFeaturePlanTest extends TestCase
 {
-    public function test_it_generates_comprehensive_blueprint_with_infolists_widgets_tenancy_and_themes(): void
+    public function test_it_generates_comprehensive_plan_with_infolists_widgets_tenancy_and_themes(): void
     {
-        $tool = new GenerateBlueprintTool;
+        $tool = new GeneratePlanTool;
         $response = $tool->execute([
             'feature_description' => 'Multi-tenant client portal with client infolist view, revenue chart widget, custom theme styling, and tenant isolation',
         ]);

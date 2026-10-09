@@ -1,29 +1,29 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Support;
+namespace FilaBoost\Support;
 
 use Illuminate\Support\Facades\File;
 
 class ImplementationAuditor
 {
     /**
-     * Audit an application checkout against a saved blueprint.
+     * Audit an application checkout against a saved architecture plan.
      *
-     * @param  string  $blueprintPath  Absolute or relative path to blueprint file
+     * @param  string  $planPath  Absolute or relative path to architecture plan file
      * @param  string|null  $basePath  Application base path
      */
-    public function audit(string $blueprintPath, ?string $basePath = null, array $options = []): array
+    public function audit(string $planPath, ?string $basePath = null, array $options = []): array
     {
         $base = $basePath ?? base_path();
-        $fullPath = $this->isAbsolutePath($blueprintPath) ? $blueprintPath : $base.DIRECTORY_SEPARATOR.$blueprintPath;
+        $fullPath = $this->isAbsolutePath($planPath) ? $planPath : $base.DIRECTORY_SEPARATOR.$planPath;
 
         if (! File::exists($fullPath)) {
             return [
                 'status' => 'error',
                 'coverage_score' => 0,
                 'checks' => [],
-                'discrepancies' => ["Blueprint file not found at: {$fullPath}"],
-                'recommendations' => ['Ensure the blueprint has been generated first.'],
+                'discrepancies' => ["Plan file not found at: {$fullPath}"],
+                'recommendations' => ['Ensure the architecture plan has been generated first.'],
             ];
         }
 
@@ -31,7 +31,7 @@ class ImplementationAuditor
         $discrepancies = [];
         $recommendations = [];
 
-        // 1. Check for expected modular resource classes mentioned in blueprint
+        // 1. Check for expected modular resource classes mentioned in plan
         preg_match_all('/### Resource: `App\\\\Filament\\\\Resources\\\\([^`]+)`/', $content, $resourceMatches);
         $resources = $resourceMatches[1] ?? [];
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace FilaBoost\FilamentBlueprint\Tests\Feature;
+namespace FilaBoost\Tests\Feature;
 
-use FilaBoost\FilamentBlueprint\Tests\TestCase;
+use FilaBoost\Tests\TestCase;
 use Illuminate\Support\Facades\File;
 
 class InstallSkillCommandTest extends TestCase
@@ -15,7 +15,7 @@ class InstallSkillCommandTest extends TestCase
         }
 
         $this->artisan('fila-boost:install')
-            ->expectsOutputToContain('Installing Filament Blueprint agent skills')
+            ->expectsOutputToContain('Installing Fila-boost agent skills')
             ->assertExitCode(0);
 
         $this->assertTrue(File::exists(base_path('.agents/skills/planning-filament/SKILL.md')));
