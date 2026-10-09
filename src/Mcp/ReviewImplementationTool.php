@@ -10,7 +10,7 @@ class ReviewImplementationTool
 
     public function __construct(?ImplementationAuditor $auditor = null)
     {
-        $this->auditor = $auditor ?? new ImplementationAuditor();
+        $this->auditor = $auditor ?? new ImplementationAuditor;
     }
 
     /**
@@ -50,6 +50,7 @@ class ReviewImplementationTool
     public function execute(array $arguments): array
     {
         $blueprintFile = $arguments['blueprint_file'] ?? '';
+
         return $this->auditor->audit($blueprintFile, null, $arguments);
     }
 }

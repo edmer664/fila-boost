@@ -11,11 +11,11 @@ class ReviewImplementationTest extends TestCase
     public function test_it_audits_missing_files_against_blueprint(): void
     {
         $blueprintDir = base_path('blueprints');
-        if (!File::exists($blueprintDir)) {
+        if (! File::exists($blueprintDir)) {
             File::makeDirectory($blueprintDir, 0755, true);
         }
 
-        $blueprintPath = $blueprintDir . '/test-feature.md';
+        $blueprintPath = $blueprintDir.'/test-feature.md';
         $dummyBlueprint = <<<MD
 # Blueprint: Test Feature
 ### Resource: `App\Filament\Resources\Invoices\InvoiceResource`
@@ -25,7 +25,7 @@ class ReviewImplementationTest extends TestCase
 MD;
         File::put($blueprintPath, $dummyBlueprint);
 
-        $tool = new ReviewImplementationTool();
+        $tool = new ReviewImplementationTool;
         $response = $tool->execute([
             'blueprint_file' => 'blueprints/test-feature.md',
             'run_pest_tests' => false,

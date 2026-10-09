@@ -28,15 +28,16 @@ class InstallSkillCommand extends Command
     {
         $this->info('Installing Filament Blueprint agent skills for Laravel Boost...');
 
-        $sourceDir = __DIR__ . '/../../resources/skills';
+        $sourceDir = __DIR__.'/../../resources/skills';
         $destDir = base_path('.agents/skills');
 
-        if (!File::exists($sourceDir)) {
+        if (! File::exists($sourceDir)) {
             $this->error("Source skills directory not found at: {$sourceDir}");
+
             return 1;
         }
 
-        if (!File::exists($destDir)) {
+        if (! File::exists($destDir)) {
             File::makeDirectory($destDir, 0755, true);
         }
 
@@ -46,8 +47,9 @@ class InstallSkillCommand extends Command
             $skillSource = "{$sourceDir}/{$skill}";
             $skillDest = "{$destDir}/{$skill}";
 
-            if (File::exists($skillDest) && !$this->option('force')) {
+            if (File::exists($skillDest) && ! $this->option('force')) {
                 $this->warn("Skill '{$skill}' already exists in .agents/skills. Use --force to overwrite.");
+
                 continue;
             }
 
@@ -56,11 +58,12 @@ class InstallSkillCommand extends Command
         }
 
         // Check for Boost or MCP compatibility
-        if (!class_exists('Laravel\\Boost\\BoostServiceProvider') && !File::exists(base_path('composer.json'))) {
+        if (! class_exists('Laravel\\Boost\\BoostServiceProvider') && ! File::exists(base_path('composer.json'))) {
             $this->comment('Tip: Install laravel/boost to enable automated agent context enhancements.');
         }
 
         $this->info('Filament Blueprint agent skills successfully installed!');
+
         return 0;
     }
 }

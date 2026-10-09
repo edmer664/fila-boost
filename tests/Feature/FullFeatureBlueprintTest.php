@@ -9,7 +9,7 @@ class FullFeatureBlueprintTest extends TestCase
 {
     public function test_it_generates_comprehensive_blueprint_with_infolists_widgets_tenancy_and_themes(): void
     {
-        $tool = new GenerateBlueprintTool();
+        $tool = new GenerateBlueprintTool;
         $response = $tool->execute([
             'feature_description' => 'Multi-tenant client portal with client infolist view, revenue chart widget, custom theme styling, and tenant isolation',
         ]);

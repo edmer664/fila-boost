@@ -1,19 +1,17 @@
-# Fila-boost: Filament v5.x Blueprint Agent Skill & Documentation MCP Tooling
+# Fila-boost: Filament v5.x Blueprint Agent Skills for Laravel Boost
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Fila-boost is a 100% free, open-source (MIT) alternative to proprietary Filament blueprint tools. It provides reusable agent skills and Model Context Protocol (MCP) tooling natively integrated with **Laravel Boost** and leading AI coding agents (Claude Code, Cursor, GitHub Copilot).
+Fila-boost is a 100% free, open-source (MIT) alternative to proprietary Filament blueprint tools. It provides reusable agent skills and Model Context Protocol (MCP) tooling natively designed for **Laravel Boost** and leading AI coding agents (Claude Code, Cursor, GitHub Copilot).
 
-Fila-boost supports the **entire Filament feature suite**—Resources, Modular Forms, Tables, Infolists, Dashboard Widgets, Multi-Tenancy, Themes/Styling, and Advanced Layouts—and embeds official Filament documentation directly via MCP for fast, offline, unhallucinated AI generation.
+Fila-boost supports the **entire Filament feature suite**—Resources, Modular Forms, Tables, Infolists, Dashboard Widgets, Multi-Tenancy, Themes/Styling, and Advanced Layouts—grounded with **Laravel Boost's native `search-docs`** tool for unhallucinated, version-accurate AI generation.
 
 ---
 
 ## Key Features
 
-- **Built-in Documentation MCP Tools**:
-  - `search_filament_docs`: Search 80+ bundled official Filament v5 guides across components, styling, testing, and plugins.
-  - `get_filament_doc`: Read the complete markdown content of any official guide on-demand.
-  - **100% Offline & Instant**: Zero third-party API dependencies or external network latency.
+- **Native Laravel Boost Grounding**:
+  - Leverages Laravel Boost's native `search-docs` MCP tool to fetch up-to-date Filament v5 documentation directly from the vendor ecosystem.
 - **Full Filament Feature Coverage**:
   - **Infolists**: Modular schemas (`Infolists/{Name}Infolist.php`) with text, icon, image, badge, and repeatable entries.
   - **Widgets**: Pre-configured `StatsOverviewWidget`, Chart widgets, and Table widgets.
@@ -45,31 +43,7 @@ php artisan fila-boost:install
 
 ## Usage with AI Coding Agents
 
-### 1. Querying Documentation via MCP
-
-AI agents connected to Laravel Boost can query documentation on-demand:
-
-```json
-{
-  "tool": "search_filament_docs",
-  "arguments": {
-    "query": "infolist entries"
-  }
-}
-```
-
-Or retrieve the complete guide:
-
-```json
-{
-  "tool": "get_filament_doc",
-  "arguments": {
-    "topic_id": "12-components/02-infolist"
-  }
-}
-```
-
-### 2. Planning Comprehensive Features (`planning-filament`)
+### 1. Planning Comprehensive Features (`planning-filament`)
 
 Prompt your AI coding agent (Claude Code, Cursor, Copilot) with Laravel Boost active:
 
@@ -86,7 +60,7 @@ The agent produces a comprehensive blueprint at `blueprints/client-portal.md`:
 - Authorization Policy: `App\Policies\ClientPolicy.php` with tenancy checks
 - Pest PHP Test Suites: `tests/Feature/Filament/ClientsTest.php`
 
-### 3. Reviewing the Implementation (`reviewing-filament-plans`)
+### 2. Reviewing the Implementation (`reviewing-filament-plans`)
 
 Prompt your AI agent:
 

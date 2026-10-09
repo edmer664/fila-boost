@@ -9,7 +9,7 @@ class GenerateBlueprintTest extends TestCase
 {
     public function test_it_generates_comprehensive_blueprint_with_unresolved_decisions(): void
     {
-        $tool = new GenerateBlueprintTool();
+        $tool = new GenerateBlueprintTool;
         $response = $tool->execute([
             'feature_description' => 'Customer orders with status workflow and invoice payment handling',
         ]);

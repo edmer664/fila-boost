@@ -9,7 +9,7 @@ class McpToolSchemaTest extends TestCase
 {
     public function test_generate_blueprint_tool_schema_conforms_to_mcp(): void
     {
-        $tool = new GenerateBlueprintTool();
+        $tool = new GenerateBlueprintTool;
         $schema = $tool->schema();
 
         $this->assertEquals('generate_filament_blueprint', $schema['name']);
@@ -21,7 +21,7 @@ class McpToolSchemaTest extends TestCase
 
     public function test_generate_blueprint_tool_executes_successfully(): void
     {
-        $tool = new GenerateBlueprintTool();
+        $tool = new GenerateBlueprintTool;
         $response = $tool->execute([
             'feature_description' => 'Product catalog with category relationships and pricing',
         ]);

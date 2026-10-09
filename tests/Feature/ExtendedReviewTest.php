@@ -11,11 +11,11 @@ class ExtendedReviewTest extends TestCase
     public function test_it_audits_missing_infolists_and_widgets(): void
     {
         $blueprintDir = base_path('blueprints');
-        if (!File::exists($blueprintDir)) {
+        if (! File::exists($blueprintDir)) {
             File::makeDirectory($blueprintDir, 0755, true);
         }
 
-        $blueprintPath = $blueprintDir . '/extended-feature.md';
+        $blueprintPath = $blueprintDir.'/extended-feature.md';
         $dummyBlueprint = <<<MD
 # Blueprint: Extended Feature
 ### Resource: `App\Filament\Resources\Clients\ClientResource`
@@ -28,7 +28,7 @@ class ExtendedReviewTest extends TestCase
 MD;
         File::put($blueprintPath, $dummyBlueprint);
 
-        $tool = new ReviewImplementationTool();
+        $tool = new ReviewImplementationTool;
         $response = $tool->execute([
             'blueprint_file' => 'blueprints/extended-feature.md',
             'run_pest_tests' => false,

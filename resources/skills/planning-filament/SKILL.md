@@ -19,11 +19,11 @@ triggers:
 
 When invoked, the AI coding agent MUST generate a structured, self-contained Filament v5.x Blueprint implementation plan adhering strictly to official Filament v5 modular architecture.
 
-## AI Grounding via MCP Documentation Tools
+## AI Grounding via Laravel Boost Documentation
 
-Before guessing method signatures or component syntax, the agent SHOULD query the bundled official Filament documentation via MCP:
-- `search_filament_docs`: Search by keyword (e.g. `query: "infolist entries"`, `query: "multi-tenancy"`, `query: "custom theme colors"`).
-- `get_filament_doc`: Retrieve the full markdown reference (e.g. `topic_id: "12-components/02-infolist"`).
+Before guessing method signatures or component syntax, the agent SHOULD query Filament documentation using Laravel Boost's native `search-docs` tool:
+- Use `search-docs` with `packages: ["filament/filament"]` and topic queries (e.g. `queries: ["infolist entries", "repeatable entry"]`, `queries: ["stats overview widget", "chart widget"]`, `queries: ["multi-tenancy"]`).
+- Ground all generated form schemas, entry types, table columns, and widget signatures against official Filament v5.x documentation before drafting blueprints.
 
 ## Guidelines & Rules
 

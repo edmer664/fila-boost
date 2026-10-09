@@ -40,6 +40,11 @@
             ]
         }
     },
+    "scripts": {
+        "test": "pest",
+        "format": "pint",
+        "test:style": "pint --test"
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {

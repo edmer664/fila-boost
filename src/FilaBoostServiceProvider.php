@@ -4,10 +4,7 @@ namespace FilaBoost\FilamentBlueprint;
 
 use FilaBoost\FilamentBlueprint\Commands\InstallSkillCommand;
 use FilaBoost\FilamentBlueprint\Mcp\GenerateBlueprintTool;
-use FilaBoost\FilamentBlueprint\Mcp\GetDocTool;
 use FilaBoost\FilamentBlueprint\Mcp\ReviewImplementationTool;
-use FilaBoost\FilamentBlueprint\Mcp\SearchDocsTool;
-use FilaBoost\FilamentBlueprint\Support\DocsRepository;
 use Illuminate\Support\ServiceProvider;
 
 class FilaBoostServiceProvider extends ServiceProvider
@@ -17,24 +14,12 @@ class FilaBoostServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(DocsRepository::class, function () {
-            return new DocsRepository();
-        });
-
-        $this->app->singleton(SearchDocsTool::class, function ($app) {
-            return new SearchDocsTool($app->make(DocsRepository::class));
-        });
-
-        $this->app->singleton(GetDocTool::class, function ($app) {
-            return new GetDocTool($app->make(DocsRepository::class));
-        });
-
         $this->app->singleton(GenerateBlueprintTool::class, function () {
-            return new GenerateBlueprintTool();
+            return new GenerateBlueprintTool;
         });
 
         $this->app->singleton(ReviewImplementationTool::class, function () {
-            return new ReviewImplementationTool();
+            return new ReviewImplementationTool;
         });
     }
 
@@ -49,7 +34,7 @@ class FilaBoostServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__ . '/../resources/skills' => base_path('.agents/skills'),
+                __DIR__.'/../resources/skills' => base_path('.agents/skills'),
             ], 'fila-boost-skills');
         }
     }

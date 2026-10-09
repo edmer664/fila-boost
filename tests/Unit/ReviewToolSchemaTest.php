@@ -9,7 +9,7 @@ class ReviewToolSchemaTest extends TestCase
 {
     public function test_review_implementation_tool_schema_conforms_to_mcp(): void
     {
-        $tool = new ReviewImplementationTool();
+        $tool = new ReviewImplementationTool;
         $schema = $tool->schema();
 
         $this->assertEquals('review_filament_implementation', $schema['name']);

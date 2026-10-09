@@ -9,7 +9,7 @@ class BlueprintRendererTest extends TestCase
 {
     public function test_it_renders_filament_v5_modular_blueprint(): void
     {
-        $renderer = new BlueprintRenderer();
+        $renderer = new BlueprintRenderer;
         $result = $renderer->render([
             'feature_description' => 'Customer invoicing with line items and status tracking',
         ]);

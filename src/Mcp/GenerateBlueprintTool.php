@@ -11,7 +11,7 @@ class GenerateBlueprintTool
 
     public function __construct(?BlueprintRenderer $renderer = null)
     {
-        $this->renderer = $renderer ?? new BlueprintRenderer();
+        $this->renderer = $renderer ?? new BlueprintRenderer;
     }
 
     /**
@@ -59,10 +59,10 @@ class GenerateBlueprintTool
 
         // Optionally write blueprint to target file if in application environment
         $targetFile = $result['blueprint_file'];
-        if (function_exists('base_path') && !empty($targetFile)) {
+        if (function_exists('base_path') && ! empty($targetFile)) {
             $dest = base_path($targetFile);
             $dir = dirname($dest);
-            if (!File::isDirectory($dir) && @mkdir($dir, 0755, true)) {
+            if (! File::isDirectory($dir) && @mkdir($dir, 0755, true)) {
                 @file_put_contents($dest, $result['markdown_content']);
             }
         }

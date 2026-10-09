@@ -9,17 +9,15 @@ class ImplementationAuditor
     /**
      * Audit an application checkout against a saved blueprint.
      *
-     * @param string $blueprintPath Absolute or relative path to blueprint file
-     * @param string|null $basePath Application base path
-     * @param array $options
-     * @return array
+     * @param  string  $blueprintPath  Absolute or relative path to blueprint file
+     * @param  string|null  $basePath  Application base path
      */
     public function audit(string $blueprintPath, ?string $basePath = null, array $options = []): array
     {
         $base = $basePath ?? base_path();
-        $fullPath = File::isAbsolutePath($blueprintPath) ? $blueprintPath : $base . DIRECTORY_SEPARATOR . $blueprintPath;
+        $fullPath = $this->isAbsolutePath($blueprintPath) ? $blueprintPath : $base.DIRECTORY_SEPARATOR.$blueprintPath;
 
-        if (!File::exists($fullPath)) {
+        if (! File::exists($fullPath)) {
             return [
                 'status' => 'error',
                 'coverage_score' => 0,
@@ -53,7 +51,7 @@ class ImplementationAuditor
             $folder = dirname(str_replace('\\', '/', $resourceSubpath));
 
             $relResourceFile = "app/Filament/Resources/{$resourceSubpath}.php";
-            if (!File::exists($base . '/' . $relResourceFile)) {
+            if (! File::exists($base.'/'.$relResourceFile)) {
                 $modularPassed = false;
                 $discrepancies[] = "Missing Filament Resource: {$relResourceFile}";
                 $recommendations[] = "Create {$relResourceFile} adhering to Filament v5 conventions.";
@@ -62,7 +60,7 @@ class ImplementationAuditor
             // Check modular Schemas/{Name}Form.php
             $entityName = str_replace('Resource', '', $resourceClass);
             $relFormFile = "app/Filament/Resources/{$folder}/Schemas/{$entityName}Form.php";
-            if (!File::exists($base . '/' . $relFormFile)) {
+            if (! File::exists($base.'/'.$relFormFile)) {
                 $formsPassed = false;
                 $discrepancies[] = "Missing Filament v5 Modular Form Schema: {$relFormFile}";
                 $recommendations[] = "Implement modular form class {$relFormFile} using configure(Schema \$schema).";
@@ -70,7 +68,7 @@ class ImplementationAuditor
 
             // Check modular Tables/{Plural}Table.php
             $relTableFile = "app/Filament/Resources/{$folder}/Tables/{$folder}Table.php";
-            if (!File::exists($base . '/' . $relTableFile)) {
+            if (! File::exists($base.'/'.$relTableFile)) {
                 $tablesPassed = false;
                 $discrepancies[] = "Missing Filament v5 Modular Table Schema: {$relTableFile}";
                 $recommendations[] = "Implement modular table class {$relTableFile} using configure(Table \$table).";
@@ -79,7 +77,7 @@ class ImplementationAuditor
             // Check Infolist if specified
             if (str_contains($content, 'Infolist Schema:')) {
                 $relInfolistFile = "app/Filament/Resources/{$folder}/Infolists/{$entityName}Infolist.php";
-                if (!File::exists($base . '/' . $relInfolistFile)) {
+                if (! File::exists($base.'/'.$relInfolistFile)) {
                     $infolistsPassed = false;
                     $discrepancies[] = "Missing Filament v5 Modular Infolist Schema: {$relInfolistFile}";
                     $recommendations[] = "Implement modular infolist class {$relInfolistFile} using configure(Infolist \$infolist).";
@@ -94,7 +92,7 @@ class ImplementationAuditor
 
         foreach ($widgets as $widget) {
             $relWidgetFile = "app/Filament/Widgets/{$widget}.php";
-            if (!File::exists($base . '/' . $relWidgetFile)) {
+            if (! File::exists($base.'/'.$relWidgetFile)) {
                 $widgetsPassed = false;
                 $discrepancies[] = "Missing Filament Widget: {$relWidgetFile}";
                 $recommendations[] = "Create widget class {$relWidgetFile}.";
@@ -104,10 +102,10 @@ class ImplementationAuditor
         // 3. Check for Multi-Tenancy if enabled
         $tenancyPassed = true;
         if (str_contains($content, 'Multi-Tenancy Architecture')) {
-            if (!File::exists($base . '/app/Models/Team.php') && !File::exists($base . '/app/Models/Company.php')) {
+            if (! File::exists($base.'/app/Models/Team.php') && ! File::exists($base.'/app/Models/Company.php')) {
                 $tenancyPassed = false;
-                $discrepancies[] = "Missing Tenant Model (Team or Company) required for multi-tenancy.";
-                $recommendations[] = "Create Team or Company model and configure ->tenant() in PanelProvider.";
+                $discrepancies[] = 'Missing Tenant Model (Team or Company) required for multi-tenancy.';
+                $recommendations[] = 'Create Team or Company model and configure ->tenant() in PanelProvider.';
             }
         }
 
@@ -118,7 +116,7 @@ class ImplementationAuditor
 
         foreach ($models as $model) {
             $relModelFile = "app/Models/{$model}.php";
-            if (!File::exists($base . '/' . $relModelFile)) {
+            if (! File::exists($base.'/'.$relModelFile)) {
                 $modelsPassed = false;
                 $discrepancies[] = "Missing Eloquent Model: {$relModelFile}";
                 $recommendations[] = "Create Eloquent model {$relModelFile} with attributes and casts.";
@@ -132,7 +130,7 @@ class ImplementationAuditor
 
         foreach ($policies as $policy) {
             $relPolicyFile = "app/Policies/{$policy}.php";
-            if (!File::exists($base . '/' . $relPolicyFile)) {
+            if (! File::exists($base.'/'.$relPolicyFile)) {
                 $policiesPassed = false;
                 $discrepancies[] = "Missing Authorization Policy: {$relPolicyFile}";
                 $recommendations[] = "Generate authorization policy {$relPolicyFile} with required abilities.";
@@ -145,7 +143,7 @@ class ImplementationAuditor
         $testsPassed = true;
 
         foreach ($tests as $testFile) {
-            if (!File::exists($base . '/' . $testFile)) {
+            if (! File::exists($base.'/'.$testFile)) {
                 $testsPassed = false;
                 $discrepancies[] = "Missing Pest Test File: {$testFile}";
                 $recommendations[] = "Create Pest test suite at {$testFile}.";
@@ -178,5 +176,15 @@ class ImplementationAuditor
             'discrepancies' => $discrepancies,
             'recommendations' => $recommendations,
         ];
+    }
+
+    /**
+     * Determine if the given path is an absolute path.
+     */
+    protected function isAbsolutePath(string $path): bool
+    {
+        return str_starts_with($path, '/')
+            || str_starts_with($path, '\\')
+            || (bool) preg_match('#^[a-zA-Z]:[\\\\/]#', $path);
     }
 }
