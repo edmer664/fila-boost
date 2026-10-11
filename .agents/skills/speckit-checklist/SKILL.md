@@ -3,6 +3,7 @@ name: "speckit-checklist"
 description: "Generate a custom checklist for the current feature based on user requirements."
 compatibility: "Requires spec-kit project structure with .specify/ directory"
 metadata:
+  internal: true
   author: "github-spec-kit"
   source: "templates/commands/checklist.md"
 ---

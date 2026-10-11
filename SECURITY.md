@@ -7,8 +7,7 @@ The following versions of Fila-boost currently receive security updates:
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.x     | :white_check_mark: |
-| 0.2.x   | :white_check_mark: |
-| < 0.2   | :x:                |
+| 0.x     | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

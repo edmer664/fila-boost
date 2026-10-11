@@ -1,11 +1,12 @@
 # Fila-boost: AI Architecture Planning & Code Review Toolkit for Filament v5.x
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![skills.sh](https://skills.sh/b/edmer664/fila-boost)](https://skills.sh/edmer664/fila-boost)
 
 > [!IMPORTANT]
 > **Independent Project Notice**: Fila-boost is an independently developed open-source community project. It is **not affiliated with, maintained by, sponsored by, or endorsed by the Filament core team**. Filament™ is a trademark of its respective owners.
 
-Fila-boost is an open-source development toolkit and agent skill for Filament v5.x applications, natively designed for **Laravel Boost** and modern AI coding agents (Claude Code, Cursor, GitHub Copilot).
+Fila-boost is an open-source development toolkit and agent skill package for Filament v5.x applications, natively designed for **Laravel Boost**, **[skills.sh](https://skills.sh)**, and modern AI coding agents (Claude Code, Cursor, GitHub Copilot, Codex, Windsurf, Antigravity).
 
 It empowers developers and AI agents to design, scaffold, and verify modular Filament architectures—ensuring clean separation of concerns, version-accurate APIs, and testable code before implementing features.
 
@@ -51,6 +52,27 @@ Fila-boost is an independent, open-source (MIT) community alternative tailored s
 ---
 
 ## Installation
+
+### Option 1: Via Agent Skills CLI (`npx skills` / [skills.sh](https://skills.sh))
+
+Install the skills directly into any supported AI coding agent (Claude Code, Cursor, GitHub Copilot, Codex, Windsurf, Antigravity, OpenCode, and more):
+
+```bash
+# Install all Fila-boost skills
+npx skills add edmer664/fila-boost
+
+# List available skills in this repository
+npx skills add edmer664/fila-boost --list
+
+# Install a specific skill
+npx skills add edmer664/fila-boost --skill planning-filament
+npx skills add edmer664/fila-boost --skill reviewing-filament-plans
+
+# Install globally across all projects
+npx skills add -g edmer664/fila-boost
+```
+
+### Option 2: Via Composer (includes PHP MCP Tools & Artisan Installer)
 
 Install `fila-boost/fila-boost` into your Laravel application:
 

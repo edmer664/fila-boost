@@ -39,7 +39,7 @@ class FilaBoostServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__.'/../resources/skills' => base_path('.agents/skills'),
+                __DIR__.'/../skills' => base_path('.agents/skills'),
             ], 'fila-boost-skills');
         }
     }

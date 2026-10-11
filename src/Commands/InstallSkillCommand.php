@@ -28,7 +28,7 @@ class InstallSkillCommand extends Command
     {
         $this->info('Installing Fila-boost agent skills for Laravel Boost...');
 
-        $sourceDir = __DIR__.'/../../resources/skills';
+        $sourceDir = __DIR__.'/../../skills';
         $destDir = base_path('.agents/skills');
 
         if (! File::exists($sourceDir)) {
