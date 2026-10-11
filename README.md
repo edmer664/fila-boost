@@ -111,6 +111,12 @@ vendor/bin/pint --test
 
 ---
 
+## Security
+
+If you discover a security vulnerability within Fila-boost, please review our [Security Policy](SECURITY.md) for reporting guidelines. Please do not report security issues via public GitHub issues.
+
+---
+
 ## License
 
 The MIT License (MIT). See [LICENSE](./LICENSE) for details.
