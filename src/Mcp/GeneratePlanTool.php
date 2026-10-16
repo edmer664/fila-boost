@@ -62,9 +62,8 @@ class GeneratePlanTool
         if (function_exists('base_path') && ! empty($targetFile)) {
             $dest = base_path($targetFile);
             $dir = dirname($dest);
-            if (! File::isDirectory($dir) && @mkdir($dir, 0755, true)) {
-                @file_put_contents($dest, $result['markdown_content']);
-            }
+            File::ensureDirectoryExists($dir);
+            File::put($dest, $result['markdown_content']);
         }
 
         return $result;
